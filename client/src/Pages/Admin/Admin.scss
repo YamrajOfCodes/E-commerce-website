@@ -1,0 +1,30 @@
+.section{
+    height: auto;
+    width: 100%;
+    background-color: whitesmoke;
+    display: flex;
+    gap: 24px;
+
+    .card{
+        height: 150px;
+        width: 300px;
+
+        .number{
+            display: flex;
+            justify-content: space-between;
+            h4{
+                font-size: 2rem;
+            }
+        }
+        .flex{
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+    }
+}
+.section-2{
+    height: auto;
+    width: 40vw;
+    margin-right: 42vw;
+}

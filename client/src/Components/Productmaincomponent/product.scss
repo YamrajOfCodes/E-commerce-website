@@ -1,0 +1,52 @@
+#seller{
+    margin-top: 5vh;
+    height: auto;
+
+    
+    .products{
+        padding: 0px 10px ;
+        height: 100%;
+        display: flex;
+         flex-wrap: wrap;
+        .cards{
+            width: 300px;
+            margin-bottom: 8vh;
+        }
+
+        .product-title{
+            p{
+                font-size: 1.2rem;
+                font-weight: 500;
+
+            }
+        }
+        .product-price{
+            p{
+                font-size: 1.2rem;
+                font-weight: 500;
+            }
+        }
+        .product-buy-button{
+            height: 50px;
+            width: 120px;
+            button{
+             height: 100%;
+             width: 100%;
+             border-radius: 14px;
+             background-color: rgb(235, 81, 81);
+             border: none;
+             a{
+                text-decoration: none;
+                color: white;
+                font-size: 1rem;
+                font-weight: 500;
+                text-transform: uppercase;
+             }
+            }
+        }
+    }
+
+    .spacer{
+        margin-top: 10vh;
+    }
+}

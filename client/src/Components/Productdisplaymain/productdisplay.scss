@@ -1,0 +1,18 @@
+#productdisplay{
+    height: auto;
+
+    .product{
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        // background-color: blue;
+        .left_part{
+            flex: 4;
+        }
+        .right_part{
+            flex: 7;
+            // background-color: red;
+        
+        }
+    }
+}
