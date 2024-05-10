@@ -23,12 +23,12 @@ export const adminLogin=createAsyncThunk("AdminLogin",async(data)=>{
     }
 })
 
-export const adminloggedin=createAsyncThunk("adminloggedin",async(thunk)=>{
+export const adminloggedin=createAsyncThunk("adminloggedin",async()=>{
    try {
      const response=await adminloggedinApi();
-    //  console.log("response",response);
+     console.log("response",response);
     //  console.log("hello");
-     return response;
+     return response.data;
    } catch (error) {
     throw error;
    }
@@ -91,7 +91,7 @@ export const adminSlice=createSlice({
         })
         .addCase(adminloggedin.fulfilled,(state,action)=>{
             state.loader=false;
-            state.adminLoggedin=[action.payload];
+            state.adminLoggedin=action.payload;
         })
         .addCase(adminloggedin.rejected,(state,action)=>{
             state.loader=false;

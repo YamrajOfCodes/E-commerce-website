@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { userLoginAPI, userLogoutAPI, userRegisterAPI, userVerifyAPI } from "../../../Api/UserApi/userAPI";
+import { deleteuserAPI, getusersAPI, userLoginAPI, userLogoutAPI, userRegisterAPI, userVerifyAPI } from "../../../Api/UserApi/userAPI";
 import toast from "react-hot-toast";
 import { addtocartAPI, getcartdataAPI, removeitemAPI, removesingleproductAPI } from "../../../Api/CartApi/CartAPI";
 
@@ -25,6 +25,12 @@ export const userRegister=createAsyncThunk("userRegister",async(data)=>{
     throw error
  }
 
+})
+
+
+export const getUsers=createAsyncThunk("getUsers",async(data)=>{
+    const response= await getusersAPI(data);
+    return response.data;
 })
 
 
@@ -129,6 +135,16 @@ try {
 })
 
 
+export const DeleteUser=createAsyncThunk("DeleteUser",async(data)=>{
+    const response=await deleteuserAPI(data);
+    if(response.status==200){
+        toast.success(response.data);
+        return response.data
+    }else{
+        toast.error("user not deleted")
+    }
+})
+
 
 
 
@@ -138,6 +154,8 @@ export const userSlice=createSlice({
         usersRegister:[],
         userLogin:[],
         userLoggedin:[],
+        getusers:[],
+        deleteuser:[],
         userLogout:[],
         addtocart:[],
         cartdata:[],
@@ -182,6 +200,36 @@ export const userSlice=createSlice({
             state.userLoggedin=[action.payload]
         })
         .addCase(userVerify.rejected,(state,action)=>{
+            state.loader=false;
+            state.error=action.payload
+        })
+
+
+        //Getusers
+
+        bulider.addCase(getUsers.pending,(state)=>{
+            state.loader=true
+        })
+        .addCase(getUsers.fulfilled,(state,action)=>{
+            state.loader=false;
+            state.getusers=[action.payload]
+        })
+        .addCase(getUsers.rejected,(state,action)=>{
+            state.loader=false;
+            state.error=action.payload
+        })
+
+
+        //deleteuser
+
+        bulider.addCase(DeleteUser.pending,(state)=>{
+            state.loader=true
+        })
+        .addCase(DeleteUser.fulfilled,(state,action)=>{
+            state.loader=false;
+            state.deleteuser=[action.payload]
+        })
+        .addCase(DeleteUser.rejected,(state,action)=>{
             state.loader=false;
             state.error=action.payload
         })

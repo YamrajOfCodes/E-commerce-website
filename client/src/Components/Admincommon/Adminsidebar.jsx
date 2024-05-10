@@ -12,7 +12,7 @@ const Adminsidebar = ({children}) => {
 
     const dispatch=useDispatch();
 
-    // const {adminLoggedin}=useSelector(state=>state.admin);
+    const {adminLoggedin}=useSelector(state=>state.admin);
     const navigate=useNavigate();
 
 //    console.log(adminLoggedin[0]?.data.name);
@@ -33,7 +33,11 @@ const Adminsidebar = ({children}) => {
    
 
      const handlefunction=()=>{
-       dispatch(adminloggedin())
+       dispatch(adminloggedin()).then((res)=>{
+        console.log("res",res);
+       }).catch((e)=>{
+        console.log(e);
+       })
      }
 
      const logoutfunction=()=>{

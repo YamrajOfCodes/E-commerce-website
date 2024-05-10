@@ -19,4 +19,12 @@ export const userLogoutAPI=async(data,header)=>{
     return await commonrequest("GET",`${Base_URL}/user/api/logout`,"",header,"user");
 }
 
+export const getusersAPI=async(data,header)=>{
+    return await commonrequest("GET",`${Base_URL}/user/api/getallusers?page=${data.page}`,"",header,"admin")
+}
+
+export const deleteuserAPI=async(data,header)=>{
+    return await commonrequest("DELETE",`${Base_URL}/user/api/deleteuser/${data.userId}`,{},header,"admin");
+}
+
 

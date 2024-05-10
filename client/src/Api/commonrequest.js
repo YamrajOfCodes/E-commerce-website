@@ -32,7 +32,7 @@ export const commonrequest=async(methods,url,body,header,auth)=>{
   
     try {
         const response=await axios(config);
-        // console.log(response);
+        console.log(response);
         return response
     } catch (error) {
         return error;
